@@ -20,8 +20,8 @@ function [MonteCarloPval,H] = SignificanceTest(R, shuffleR, level)
     if nargin < 3
         level = 0.05;
     end
-    tmp = sort(shuffleR,'descend');
-    index = find(tmp >= abs(R));
+    
+    index = find(shuffleR >= R);
     MonteCarloPval = (length(index)+1)/(length(shuffleR)+1);
     if MonteCarloPval<=level
         H = 1;
